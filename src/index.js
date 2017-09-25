@@ -42,7 +42,7 @@ function weatherDataMunging(weatherFilePath) {
   const weatherDataFile = readFile(weatherFilePath);
   const weatherColumnRegex = /\s+\d+\s+\d+\s+\d+/;
   const result = getMinimunDifferenceBetweenTwoColumns(weatherDataFile, weatherColumnRegex, 1, 2);
-  console.log('Day Number: ', result[0], ' Maximum temperature: ', result[1], ' Minimum temperature: ', result[2]);
+  return (`Day Number: ${result[0]} Maximum temperature: ${result[1]} Minimum temperature: ${result[2]}`);
 }
 
 // Searches for the lowest difference between F and A in the data.
@@ -50,8 +50,10 @@ function footballDataMunging(footballFilePath) {
   const footballDataFile = readFile(footballFilePath);
   const footballColumnRegex = /\s+\d+.\s+\w+\s+\d+\s+\d+\s+\d+\s+\d+\s+\d+\s+-\s+\d+/;
   const result = getMinimunDifferenceBetweenTwoColumns(footballDataFile, footballColumnRegex, 6, 8);
-  console.log('Name: ', result[1], ' Smallest difference: ', Math.abs(result[6] - result[8]));
+  return (`Name: ${result[1]} Smallest difference: ${Math.abs(result[6] - result[8])}`);
 }
 
-weatherDataMunging('./weather.dat');
-footballDataMunging('./football.dat');
+module.exports = {
+  weatherData(filePath) { return weatherDataMunging(filePath); },
+  footballData(filePath) { return footballDataMunging(filePath); },
+};
