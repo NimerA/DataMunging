@@ -5,7 +5,7 @@ const weatherDatam = index.weatherData;
 
 describe('when using weather data munging', () => {
   it('using ./weather.dat', () => {
-    expect(weatherDatam('./weather.dat')).toBe('Day Number: 14 Maximum temperature: 61 Minimum temperature: 59');
+    expect(weatherDatam('./weather.dat')).toBe('Day: 14 Max Temp: 61 Min Temp: 59');
   });
 });
 
