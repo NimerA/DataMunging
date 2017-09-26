@@ -34,30 +34,18 @@ function getMinimunDifferenceBetweenTwoColumns(file, columnOne, columnTwo) {
 }
 
 // Searches for the lowest tempeture spread in the data.
-function weatherDataMunging(weatherFilePath) {
-  const weatherDataFile = readFile(weatherFilePath);
-  const maxTempetureColumnNumber = 1;
-  const minTempetureColumnNumber = 2;
-  const result = getMinimunDifferenceBetweenTwoColumns(
-    weatherDataFile,
-    maxTempetureColumnNumber,
-    minTempetureColumnNumber,
-  );
-  return (`Day: ${result[0]} Max Temp: ${result[maxTempetureColumnNumber]} Min Temp: ${result[minTempetureColumnNumber]}`);
+function weatherDataMunging(filePath) {
+  const dataFile = readFile(filePath);
+  const result = getMinimunDifferenceBetweenTwoColumns(dataFile, 1, 2);
+  return (`Day: ${result[0]} Max Temp: ${result[1]} Min Temp: ${result[2]}`);
 }
 
 // Searches for the lowest difference between F and A in the data.
-function footballDataMunging(footballFilePath) {
-  const footballDataFile = readFile(footballFilePath);
-  const goalsInFavorColumnNumber = 6;
-  const goalsAgainstColumnNumber = 8;
-  const result = getMinimunDifferenceBetweenTwoColumns(
-    footballDataFile,
-    goalsInFavorColumnNumber,
-    goalsAgainstColumnNumber,
-  );
-  const goalDiff = Math.abs(result[goalsInFavorColumnNumber] - result[goalsAgainstColumnNumber]);
-  return (`Name: ${result[1]} Smallest difference: ${goalDiff}`);
+function footballDataMunging(filePath) {
+  const DataFile = readFile(filePath);
+  const res = getMinimunDifferenceBetweenTwoColumns(DataFile, 6, 8);
+  const goalDiff = Math.abs(res[6] - res[8]);
+  return (`Name: ${res[1]} Smallest difference: ${goalDiff}`);
 }
 
 module.exports = {
